@@ -9,7 +9,15 @@
     class="card"
     :style="{ transform: transformString }"
   >
-    <h3 class="cardTitle">{{ card }}</h3>
+    <q-card class="full-width full-height">
+      <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
+        <div class="absolute-full text-subtitle2 flex flex-center">Caption</div>
+      </q-img>
+      <q-card-section>
+        <div class="text-h6">{{ card.name }}</div>
+        <div class="text-subtitle2">by John Doe</div>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 
@@ -21,6 +29,7 @@ const REJECT_CARD = "cardRejected";
 const SKIP_CARD = "cardSkipped";
 
 export default {
+  emits: ["hideCard", ACCEPT_CARD, REJECT_CARD, SKIP_CARD],
   static: {
     interactMaxRotation: 15,
     interactOutOfSightXCoordinate: 500,
@@ -31,7 +40,7 @@ export default {
 
   props: {
     card: {
-      type: String,
+      type: Object,
       required: true,
     },
     isCurrent: {
@@ -193,7 +202,7 @@ $fs-card-title: 1.125em;
   margin: auto;
   font-size: $fs-h2;
   font-weight: $fw-bold;
-  color: $c-white;
+  // color: $c-white;
   background-image: linear-gradient(
     -180deg,
     $primary-gradient-start 2%,

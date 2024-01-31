@@ -18,6 +18,11 @@ const routes = [
         name: "filterRestaurant",
         component: () => import("pages/FilterRestaurant.vue"),
       },
+      {
+        path: "/Wishlist",
+        name: "Wishlist",
+        component: () => import("pages/Wishlist.vue"),
+      },
     ],
   },
 

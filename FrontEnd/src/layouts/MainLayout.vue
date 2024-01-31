@@ -40,10 +40,10 @@ const linksList = [
     link: "filterRestaurant",
   },
   {
-    title: "Profile",
+    title: "Wishlist",
     caption: "Community Quasar projects",
     icon: "favorite",
-    link: "Profile",
+    link: "Wishlist",
   },
 ];
 

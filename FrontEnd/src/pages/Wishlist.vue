@@ -1,6 +1,18 @@
 <template>
   <q-page class="flex flex-center">
-    {{ store }}
+    <q-list bordered>
+      <q-item
+        v-for="(restaurant, index) in store.wishlist"
+        :key="index"
+        clickable
+        v-ripple
+      >
+        <q-item-section avatar>
+          <q-icon color="primary" name="bluetooth" />
+        </q-item-section>
+        <q-item-section>{{ restaurant?.name ?? "Nama Kedai" }}</q-item-section>
+      </q-item>
+    </q-list>
   </q-page>
 </template>
 

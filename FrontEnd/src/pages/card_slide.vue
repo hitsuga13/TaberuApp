@@ -1,32 +1,38 @@
 <template>
   <div id="app">
-		<GameCardsStack
-			:cards="visibleCards"
-			@cardAccepted="handleCardAccepted"
-			@cardRejected="handleCardRejected"
-			@cardSkipped="handleCardSkipped"
-			@hideCard="removeCardFromDeck"
-		/>
+    <GameCardsStack
+      :cards="visibleCards"
+      @cardAccepted="handleCardAccepted"
+      @cardRejected="handleCardRejected"
+      @cardSkipped="handleCardSkipped"
+      @hideCard="removeCardFromDeck"
+    />
   </div>
 </template>
 
 <script>
 import GameCardsStack from "../components/GameCardsStack.vue";
+import { globalModule } from "src/stores/globalmodule";
 
 export default {
   components: {
-    GameCardsStack
+    GameCardsStack,
   },
-
+  setup() {
+    const store = globalModule();
+    console.log(store);
+    return { store };
+  },
   data() {
     return {
-      visibleCards: ["Test", "Hehe", "Webpack"]
+      visibleCards: this.store.restaurantlist,
     };
   },
 
   methods: {
-    handleCardAccepted() {
-      console.log("handleCardAccepted");
+    handleCardAccepted(a) {
+      console.log("handleCardAccepted", a);
+      this.store.addToWishlist(a);
     },
     handleCardRejected() {
       console.log("handleCardRejected");
@@ -36,7 +42,7 @@ export default {
     },
     removeCardFromDeck() {
       this.visibleCards.shift();
-    }
-  }
+    },
+  },
 };
 </script>
