@@ -59,7 +59,7 @@ export default {
           ]
         },
         {
-        name: 'Restaurant Dcd F',
+        name: 'Restaurant F',
           foods: [
             { name: 'Fried Chicken', category: 'spicy', halal: false },
             { name: 'Fish and Chips', category: 'non-spicy', halal: true }
