@@ -1,17 +1,22 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+  <q-page class="flex flex-center">asdasd
   </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
+import { globalModule } from "src/stores/globalmodule";
+export default {
+  setup() {
+    const store = globalModule();
+    console.log(store);
+    // Access state and actions from your store
+    // For example: store.state.myProperty, store.actions.myAction()
 
-export default defineComponent({
-  name: 'IndexPage'
-})
+    return {
+      store,
+    };
+  },
+  name: "IndexPage",
+};
 </script>
