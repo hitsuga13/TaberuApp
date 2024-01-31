@@ -3,9 +3,8 @@ const routes = [
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: "", component: () => import("pages/card_slide.vue") },
-      { path: "/card_slide", component: () => import("pages/card_slide.vue") },
       { path: "", component: () => import("pages/IndexPage.vue") },
+      { path: "/card_slide", component: () => import("pages/card_slide.vue") },
       { path: "/testPinia", component: () => import("pages/testPinia.vue") },
     ],
   },
