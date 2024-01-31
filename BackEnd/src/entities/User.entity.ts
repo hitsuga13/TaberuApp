@@ -13,7 +13,6 @@ export class User {
   image: string;
 
   @ManyToMany(() => Preferences)
-  @JoinTable()
   preferences: Preferences[];
 }
 

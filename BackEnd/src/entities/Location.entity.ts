@@ -13,6 +13,4 @@ export class Location {
   @ManyToOne(() => Restaurant, restaurant => restaurant.locations)
   restaurant: Restaurant;
 
-  @OneToMany(() => MenuItem, menuItem => menuItem.location)
-  menuItems: MenuItem[];
 }
