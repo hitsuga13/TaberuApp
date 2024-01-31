@@ -1,3 +1,5 @@
+import { UserModule } from './User/user.module';
+import { RestaurantModule } from './Restaurant/restaurant.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -5,7 +7,9 @@ import { AppService } from './app.service';
 import typeOrmConfig from './typeorm.config';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig),
+  imports: [
+    UserModule,
+    RestaurantModule, TypeOrmModule.forRoot(typeOrmConfig),
   ],
   controllers: [AppController],
   providers: [AppService],
