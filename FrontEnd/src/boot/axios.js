@@ -8,7 +8,7 @@ import axios from "axios";
 // "export default () => {}" function below (which runs individually
 // for each client)
 
-const local = "http://192.168.100.78:3000";
+const local = "https://back-8ng5nziye-ameers-projects-14f98434.vercel.app/";
 let env = process.env.PROD ? "prod" : "dev";
 
 const api = axios.create({
