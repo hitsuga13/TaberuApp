@@ -3,8 +3,11 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   var whitelist = [
-    "http://localhost:9000"
-    
+    "http://localhost:9000",
+    "http://192.168.100.69:9000/",
+    "http://192.168.100.79:9000/",
+    "http://192.168.56.1:9000/"
+
   ]
   const app = await NestFactory.create(AppModule);
 
