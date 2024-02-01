@@ -8,7 +8,6 @@
       @hideCard="removeCardFromDeck"
     />
   </div>
-
 </template>
 
 <script>
