@@ -21,12 +21,7 @@
 import { defineComponent, ref } from "vue";
 
 const linksList = [
-  {
-    title: "Home",
-    caption: "@quasarframework",
-    icon: "rss_feed",
-    link: "main",
-  },
+
   {
     title: "Card",
     caption: "@QuasarFramework",

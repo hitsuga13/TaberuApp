@@ -18,13 +18,16 @@ const EX_Restaurant = {
   name: "Kedai Pak Abu",
   menuitems: [
     {
-      name: "Nasi Lemak",
+      name: "nasi lemak",
+      review : "Pak Abu nya sedap sekali",
       tags: [{ ...tags[0] }, { ...tags[2] }],
     },
   ],
+  review:[]
 };
 const EX_Restaurant2 = {
-  name: "Kedai Bak Kut Teh",
+  name: "kedai Bak Kut Teh",
+
   menuitems: [
     {
       name: "Nasi Lemak Babi",
