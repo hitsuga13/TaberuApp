@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
-import { Restaurant } from './Restaurant.entity';
-import { MenuItem } from './MenuItem.entity';
+import { Entity, PrimaryGeneratedColumn,JoinColumn, OneToOne,Column, ManyToOne, OneToMany } from 'typeorm';
+import { Restaurant } from './restaurant.entity';
+import { MenuItem } from './menuItem.entity';
 
-@Entity()
+@Entity('location')
 export class Location {
   @PrimaryGeneratedColumn()
   id: number;
@@ -10,7 +10,8 @@ export class Location {
   @Column()
   name: string;
 
-  @ManyToOne(() => Restaurant, restaurant => restaurant.locations)
+  @OneToOne(() => Restaurant, (restaurant) => restaurant.locations)
+  @JoinColumn()
   restaurant: Restaurant;
 
 }

@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Location } from './Location.entity';
-import { MenuItem } from './MenuItem.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany,OneToOne } from 'typeorm';
+import { Location } from './location.entity';
+import { MenuItem } from './menuItem.entity';
 
-@Entity()
+@Entity('restaurant') 
 export class Restaurant {
   @PrimaryGeneratedColumn()
   id: number;
@@ -22,6 +22,6 @@ export class Restaurant {
   @OneToMany(() => MenuItem, menuItem => menuItem.restaurant)
   menuitem: MenuItem[];
   
-  @OneToMany(() => Location, location => location.restaurant)
-  locations: Location[];
+  @OneToOne(() => Location, (location) => location.restaurant)
+  locations: Location;
 }

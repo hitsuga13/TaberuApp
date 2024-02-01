@@ -6,7 +6,7 @@ const routes = [
       {
         path: "",
         name: "main",
-        component: () => import("pages/IndexPage.vue"),
+        component: () => import("pages/card_slide.vue"),
       },
       {
         path: "/card_slide",
@@ -22,6 +22,16 @@ const routes = [
         path: "/Wishlist",
         name: "Wishlist",
         component: () => import("pages/Wishlist.vue"),
+      },
+      {
+        path: "/Food_Filter",
+        name: "Food_Filter",
+        component: () => import("pages/Food_Filter.vue"),
+      },
+      {
+        path: "/Food_Listing",
+        name: "Food_Listing",
+        component: () => import("pages/Food_Listing.vue"),
       },
     ],
   },

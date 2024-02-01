@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
-import { Preferences } from './Preferences.entity';
+import { Preferences } from './preferences.entity';
 
-@Entity()
+@Entity('user')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -12,8 +12,8 @@ export class User {
   @Column()
   image: string;
 
-  @ManyToMany(() => Preferences)
-  preferences: Preferences[];
+  @ManyToMany(() => Preferences, (preference)=>preference.users)
+    preferences: Preferences[];
 }
 
 //install tyupero mand mysal adapter 

@@ -2,20 +2,32 @@
 import { defineStore } from "pinia";
 
 const tags = [
-  { name: "spicy" , color: "red", textcolor:"white"},
+  { name: "spicy" },
   { name: "sweet" },
   { name: "halal" },
-  { name: "non-halal", color: "red" ,textcolor:"white"},
+  { name: "non-halal" },
+  { label: "Spicy", value: "spicy" },
+  { label: "Non Spicy", value: "non-spicy" },
+
+  { label: "Sweet", value: "sweet" },
+  { label: "Less Sweet", value: "less-sweet" },
+
+  { label: "Halal", value: "halal" },
+  { label: "Non-Halal", value: "non-halal" },
+
+  { label: "Sour", value: "sour" },
+  { label: "Less Sour", value: "less-sour" },
 ];
 const EX_Restaurant = {
-  name: "kedai pak abu",
-  src: "/img/restaurant 1.jpg",
+  name: "Kedai Pak Abu",
   menuitems: [
     {
       name: "nasi lemak",
-      tags: [tags[1], tags[2]],
+      review: "Pak Abu nya sedap sekali",
+      tags: [{ ...tags[0] }, { ...tags[2] }],
     },
   ],
+  review: [],
 };
 const EX_Restaurant2 = {
   name: "kedai Bak Kut TEh",
@@ -27,22 +39,14 @@ const EX_Restaurant2 = {
     },
   ],
 };
-const EX_Restaurant3 = {
-  name: "Restaurant 3",
-  src: "/img/restaurant 3.jpg",
-  menuitems: [
-    {
-      name: "roti canai",
-      tags: [tags[0], tags[2]],
-    },
-  ],
-};
 
 export const globalModule = defineStore("globalModule", {
   state: () => ({
     restaurantlist: [EX_Restaurant, EX_Restaurant2, EX_Restaurant3],
     preferences: [tags[1]],
     wishlist: [EX_Restaurant],
+    filteredRestaurant: [],
+    tags: [...tags],
   }),
   actions: {
     async addToWishlist(item) {
