@@ -1,19 +1,41 @@
-import { defineStore } from 'pinia'
+// src/store/filterStore.js
+import { defineStore } from 'pinia';
 
-export const useCounterStore = defineStore('counter', {
+export const useFilterStore = defineStore('filter', {
   state: () => ({
-    counter: 0
+    halalFilter: false,
+    nonHalalFilter: false,
+    sweetFilter: false,
+    lessSweetFilter: false,
+    sourFilter: false,
+    lessSourFilter: false,
   }),
-
-  getters: {
-    doubleCount (state) {
-      return state.counter * 2
-    }
-  },
-
   actions: {
-    increment () {
-      this.counter++
-    }
-  }
-})
+    toggleHalalFilter() {
+      this.halalFilter = !this.halalFilter;
+    },
+    toggleNonHalalFilter() {
+      this.nonHalalFilter = !this.nonHalalFilter;
+    },
+    toggleSweetFilter() {
+      this.sweetFilter = !this.sweetFilter;
+    },
+    toggleLessSweetFilter() {
+      this.lessSweetFilter = !this.lessSweetFilter;
+    },
+    toggleSourFilter() {
+      this.sourFilter = !this.sourFilter;
+    },
+    toggleLessSourFilter() {
+      this.lessSourFilter = !this.lessSourFilter;
+    },
+    resetFilters() {
+      this.halalFilter = false;
+      this.nonHalalFilter = false;
+      this.sweetFilter = false;
+      this.lessSweetFilter = false;
+      this.sourFilter = false;
+      this.lessSourFilter = false;
+    },
+  },
+});
