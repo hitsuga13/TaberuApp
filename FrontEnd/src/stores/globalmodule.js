@@ -8,19 +8,22 @@ const tags = [
   { name: "non-halal" },
 ];
 const EX_Restaurant = {
-  name: "kedai pak abu",
+  name: "Kedai Pak Abu",
   menuitems: [
     {
       name: "nasi lemak",
+      review : "Pak Abu nya sedap sekali",
       tags: [tags[0]],
     },
   ],
+  review:[]
 };
 const EX_Restaurant2 = {
-  name: "kedai Bak Kut TEh",
+  name: "kedai Bak Kut Teh",
   menuitems: [
     {
       name: "nasi lemak Babi",
+      review:"Babinya sedap dan lazat sekali ",
       tags: [tags[0]],
     },
   ],
