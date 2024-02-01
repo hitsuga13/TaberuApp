@@ -3,9 +3,26 @@ const routes = [
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: "", component: () => import("pages/IndexPage.vue") },
-      { path: "/card_slide", component: () => import("pages/card_slide.vue") },
-      { path: "/FilterRestaurant", component: () => import("pages/FilterRestaurant.vue") },
+      {
+        path: "",
+        name: "main",
+        component: () => import("pages/IndexPage.vue"),
+      },
+      {
+        path: "/card_slide",
+        name: "cardView",
+        component: () => import("pages/card_slide.vue"),
+      },
+      {
+        path: "/FilterRestaurant",
+        name: "filterRestaurant",
+        component: () => import("pages/FilterRestaurant.vue"),
+      },
+      {
+        path: "/Wishlist",
+        name: "Wishlist",
+        component: () => import("pages/Wishlist.vue"),
+      },
     ],
   },
 

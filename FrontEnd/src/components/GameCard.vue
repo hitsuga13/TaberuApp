@@ -4,12 +4,20 @@
     ref="interactElement"
     :class="{
       isAnimating: isInteractAnimating,
-      isCurrent: isCurrent
+      isCurrent: isCurrent,
     }"
     class="card"
     :style="{ transform: transformString }"
   >
-    <h3 class="cardTitle">{{ card.name }}</h3>
+    <q-card class="full-width full-height">
+      <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
+        <div class="absolute-full text-subtitle2 flex flex-center">Caption</div>
+      </q-img>
+      <q-card-section>
+        <div class="text-h6">{{ card.name.name }}</div>
+        <div class="text-subtitle2">by John Doe</div>
+      </q-card-section>
+    </q-card>
     <q-img :src="card.src" />
 
   </div>
@@ -17,28 +25,30 @@
 
 <script>
 import interact from "interact.js";
+
 const ACCEPT_CARD = "cardAccepted";
 const REJECT_CARD = "cardRejected";
 const SKIP_CARD = "cardSkipped";
 
 export default {
+  emits: ["hideCard", ACCEPT_CARD, REJECT_CARD, SKIP_CARD],
   static: {
     interactMaxRotation: 15,
     interactOutOfSightXCoordinate: 500,
     interactOutOfSightYCoordinate: 600,
     interactYThreshold: 150,
-    interactXThreshold: 100
+    interactXThreshold: 100,
   },
 
   props: {
     card: {
-      type: Object,
+      type: String,
       required: true
     },
     isCurrent: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
 
   data() {
@@ -49,8 +59,8 @@ export default {
       interactPosition: {
         x: 0,
         y: 0,
-        rotation: 0
-      }
+        rotation: 0,
+      },
     };
   },
 
@@ -62,30 +72,26 @@ export default {
       }
 
       return null;
-    }
+    },
   },
 
   mounted() {
     const element = this.$refs.interactElement;
-
+    // console.log(interact, element);
     interact(element).draggable({
       onstart: () => {
         this.isInteractAnimating = false;
       },
 
-      onmove: event => {
-        const {
-          interactMaxRotation,
-          interactXThreshold
-        } = this.$options.static;
+      onmove: (event) => {
+        const { interactMaxRotation, interactXThreshold } = this.$options.static;
         const x = this.interactPosition.x + event.dx;
         const y = this.interactPosition.y + event.dy;
 
         let rotation = interactMaxRotation * (x / interactXThreshold);
 
         if (rotation > interactMaxRotation) rotation = interactMaxRotation;
-        else if (rotation < -interactMaxRotation)
-          rotation = -interactMaxRotation;
+        else if (rotation < -interactMaxRotation) rotation = -interactMaxRotation;
 
         this.interactSetPosition({ x, y, rotation });
       },
@@ -99,7 +105,7 @@ export default {
         else if (x < -interactXThreshold) this.playCard(REJECT_CARD);
         else if (y > interactYThreshold) this.playCard(SKIP_CARD);
         else this.resetCardPosition();
-      }
+      },
     });
   },
 
@@ -119,7 +125,7 @@ export default {
       const {
         interactOutOfSightXCoordinate,
         interactOutOfSightYCoordinate,
-        interactMaxRotation
+        interactMaxRotation,
       } = this.$options.static;
 
       this.interactUnsetElement();
@@ -128,20 +134,20 @@ export default {
         case ACCEPT_CARD:
           this.interactSetPosition({
             x: interactOutOfSightXCoordinate,
-            rotation: interactMaxRotation
+            rotation: interactMaxRotation,
           });
           this.$emit(ACCEPT_CARD);
           break;
         case REJECT_CARD:
           this.interactSetPosition({
             x: -interactOutOfSightXCoordinate,
-            rotation: -interactMaxRotation
+            rotation: -interactMaxRotation,
           });
           this.$emit(REJECT_CARD);
           break;
         case SKIP_CARD:
           this.interactSetPosition({
-            y: interactOutOfSightYCoordinate
+            y: interactOutOfSightYCoordinate,
           });
           this.$emit(SKIP_CARD);
           break;
@@ -162,8 +168,8 @@ export default {
 
     resetCardPosition() {
       this.interactSetPosition({ x: 0, y: 0, rotation: 0 });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -198,7 +204,7 @@ $fs-card-title: 40px;
   margin: auto;
   font-size: $fs-h2;
   font-weight: $fw-bold;
-  color: $c-white;
+  // color: $c-white;
   background-image: linear-gradient(
     -180deg,
     $primary-gradient-start 2%,
