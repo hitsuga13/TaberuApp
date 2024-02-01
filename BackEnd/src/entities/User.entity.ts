@@ -14,10 +14,10 @@ export class User {
   image: string;
 
   @ManyToMany(() => Preferences, (preference)=>preference.users)
-    preferences: Preferences[];
+  preferences: Preferences[];
 
-    @OneToMany(() => Review, (review)=>review.user)
-    review: Review[];
+  @OneToMany(() => Review, (review)=>review.user)
+  review: Review[];
 }
 
 //install tyupero mand mysal adapter 

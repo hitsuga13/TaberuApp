@@ -1,5 +1,5 @@
 import { boot } from "quasar/wrappers";
-import axios from "axios";
+  import axios from "axios";
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
@@ -8,7 +8,7 @@ import axios from "axios";
 // "export default () => {}" function below (which runs individually
 // for each client)
 
-const local = "https://back-8ng5nziye-ameers-projects-14f98434.vercel.app/";
+const local = "https://back-end-ruddy-nu.vercel.app/";
 let env = process.env.PROD ? "prod" : "dev";
 
 const api = axios.create({
