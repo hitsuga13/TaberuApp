@@ -2,9 +2,9 @@
 import { defineStore } from "pinia";
 
 const tags = [
-  { name: "spicy" , color: "red", textcolor: "white"},
+  { name: "spicy", color: "red", textcolor: "white" },
   { name: "sweet" },
-  { name: "halal" , color: "red", textcolor: "white"},
+  { name: "halal", color: "red", textcolor: "white" },
   { name: "non-halal" },
   { label: "Spicy", value: "spicy" },
   { label: "Non Spicy", value: "non-spicy" },
@@ -24,20 +24,6 @@ const EX_Restaurant = {
   menuitems: [
     {
       name: "nasi lemak",
-      tags: [{ ...tags[0] }, { ...tags[2] }],
-    },
-  ],
-  reviewlist:[
-    {
-      review: "Sedappp!!",
-      user: "Ahmad",
-      date: "12/12/2022",
-    }
-  ]
-};
-const EX_Restaurant2 = {
-  [
-  name: "kedai Bak Kut Teh",
       review: "Pak Abu nya sedap sekali",
       tags: [{ ...tags[0] }, { ...tags[2] }],
     },
