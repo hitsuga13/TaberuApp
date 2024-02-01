@@ -10,12 +10,60 @@
     :style="{ transform: transformString }"
   >
     <q-card class="full-width full-height">
-      <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-        <div class="absolute-full text-subtitle2 flex flex-center">Caption</div>
-      </q-img>
+      <q-card-section style="max-height: ">
+        <q-img
+          fit="contain"
+          :src="card.src"
+          width="100%"
+          class="q-px-xl"
+          style="height: 30vh"
+        >
+        </q-img>
+      </q-card-section>
       <q-card-section>
         <div class="text-h6">{{ card.name }}</div>
-        <div class="text-subtitle2">by John Doe</div>
+        <q-list bordered separator>
+          <q-item
+            clickable
+            v-ripple
+            v-for="(menu, key) in card.menuitems"
+            :key="key"
+          >
+            <q-item-section>
+              <q-item-label overline style="font-size: 30px;">Category</q-item-label>
+              <q-item-label class="row q-gutter-sm" style="font-size:large">
+                <q-badge
+                  class="col-auto"
+                  style="font-size:30px; height: 50px;"
+                  :color="tag.color ? tag.color : 'orange'"
+                  :text-color="tag.textcolor ? tag.textcolor : 'black'"
+                  :label="tag.name"
+                  v-for="(tag, index2) in menu.tags"
+                  :key="index2"
+                />
+              </q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item
+            clickable
+            v-ripple
+            v-for="(menu, key) in card.menuitems"
+            :key="key"
+          >
+            <q-item-section>
+              <q-item-label overline style="font-size: 30px;">Category</q-item-label>
+              <q-item-label class="row q-gutter-sm" style="font-size:large">
+                <q-badge
+                  class="col-auto"
+                  style="font-size:30px; height: 50px;"
+                  :label="menu.name"
+                  v-for="(tag, index2) in menu.tags"
+                  :key="index2"
+                />
+              </q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
       </q-card-section>
     </q-card>
   </div>
@@ -23,6 +71,7 @@
 
 <script>
 import interact from "interact.js";
+import { globalModule } from "src/stores/globalmodule";
 
 const ACCEPT_CARD = "cardAccepted";
 const REJECT_CARD = "cardRejected";
@@ -62,6 +111,14 @@ export default {
     };
   },
 
+  setup() {
+    const auth = globalModule();
+
+    return {
+      auth,
+    };
+  },
+
   computed: {
     transformString() {
       if (!this.isInteractAnimating || this.isInteractDragged) {
@@ -82,14 +139,16 @@ export default {
       },
 
       onmove: (event) => {
-        const { interactMaxRotation, interactXThreshold } = this.$options.static;
+        const { interactMaxRotation, interactXThreshold } =
+          this.$options.static;
         const x = this.interactPosition.x + event.dx;
         const y = this.interactPosition.y + event.dy;
 
         let rotation = interactMaxRotation * (x / interactXThreshold);
 
         if (rotation > interactMaxRotation) rotation = interactMaxRotation;
-        else if (rotation < -interactMaxRotation) rotation = -interactMaxRotation;
+        else if (rotation < -interactMaxRotation)
+          rotation = -interactMaxRotation;
 
         this.interactSetPosition({ x, y, rotation });
       },
@@ -185,7 +244,7 @@ $fs-card-title: 1.125em;
 .card {
   @include card();
   @include absolute(0);
-  @include sizing(100% 80vw);
+  @include sizing(80vw);
   @include flex-center();
 
   @include after() {
@@ -198,7 +257,7 @@ $fs-card-title: 1.125em;
   }
 
   display: flex;
-  max-height: 350px;
+  max-height: 100vh;
   margin: auto;
   font-size: $fs-h2;
   font-weight: $fw-bold;
@@ -216,7 +275,7 @@ $fs-card-title: 1.125em;
   pointer-events: none;
   will-change: transform, opacity;
 
-  height: 100vw;
+  height: 75vh;
 
   &.isCurrent {
     pointer-events: auto;
