@@ -27,7 +27,7 @@ const EX_Restaurant2 = {
   name: "Kedai Bak Kut Teh",
   menuitems: [
     {
-      name: "nasi lemak Babi",
+      name: "Nasi Lemak Babi",
       tags: [{ ...tags[0] }, { ...tags[3] }],
     },
   ],
