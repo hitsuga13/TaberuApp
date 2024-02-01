@@ -2,7 +2,7 @@ import { MenuitemController } from './menuitem.controller';
 import { MenuitemService } from './menuitem.service';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MenuItem } from '../entities/MenuItem.entity';
+import { MenuItem } from '../entities/menuItem.entity';
 
 
 @Module({
@@ -11,5 +11,6 @@ import { MenuItem } from '../entities/MenuItem.entity';
         MenuitemController,],
     providers: [
         MenuitemService,],
+        // exports
 })
 export class MenuitemModule { }

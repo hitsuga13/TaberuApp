@@ -1,7 +1,7 @@
 // menuitem.controller.ts
 import { Controller, Get, Post, Param, Body, Put, Delete } from '@nestjs/common';
 import { MenuitemService } from './menuitem.service';
-import { MenuItem } from '../entities/menuitem.entity';
+import { MenuItem } from '../entities/menuItem.entity';
 
 @Controller('menuitems')
 export class MenuitemController {

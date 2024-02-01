@@ -9,6 +9,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import typeOrmConfig from './typeorm.config';
+import { UserController } from './User/user.controller';
+import { RestaurantController } from './Restaurant/restaurant.controller';
+import { PreferencesController } from './Preferences/preferences.controller';
+import { MenuitemController } from './MenuItem/menuitem.controller';
+import { LocationController } from './Location/location.controller';
+import { LocationService } from './Location/location.service';
+import { PreferencesService } from './Preferences/preferences.service';
+import { RestaurantService } from './Restaurant/restaurant.service';
+import { UserService } from './User/user.service';
+
 
 @Module({
   imports: [
@@ -18,8 +28,8 @@ import typeOrmConfig from './typeorm.config';
     UserModule,
     RestaurantModule, TypeOrmModule.forRoot(typeOrmConfig),
   ],
-  controllers: [AppController],
+  controllers: [ ],
   providers: [
-    MenuitemService, AppService],
+ ],
 })
 export class AppModule { }

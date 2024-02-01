@@ -2,7 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { MenuItem } from '../entities/menuitem.entity';
+import { MenuItem } from '../entities/menuItem.entity';
 
 @Injectable()
 export class MenuitemService {
@@ -20,7 +20,7 @@ export class MenuitemService {
   }
 
   async findOne(cond: any = {} ): Promise<MenuItem | undefined> {
-    return await this.menuItemRepository.findOne(cond );
+    return await this.menuItemRepository.findOne(cond);
   }
 
   async update(id: number, menuItem: MenuItem): Promise<MenuItem | undefined> {

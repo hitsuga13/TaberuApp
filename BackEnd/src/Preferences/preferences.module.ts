@@ -2,7 +2,7 @@ import { PreferencesController } from './preferences.controller';
 import { PreferencesService } from './preferences.service';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Preferences } from '../entities/Preferences.entity';
+import { Preferences } from '../entities/preferences.entity';
 
 @Module({
     imports: [TypeOrmModule.forFeature([Preferences])],
@@ -10,5 +10,6 @@ import { Preferences } from '../entities/Preferences.entity';
         PreferencesController,],
     providers: [
         PreferencesService,],
+        exports:[PreferencesService]
 })
 export class PreferencesModule { }
