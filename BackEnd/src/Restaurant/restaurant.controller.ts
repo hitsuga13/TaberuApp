@@ -14,12 +14,15 @@ export class RestaurantController {
 
   @Get()
   findAll(): Promise<Restaurant[]> {
-    return this.restaurantService.findAll({relations:["menuitem"]});
+    return this.restaurantService.findAll({relations:["menuitem","reviewlist.user"]});
   }
+  @Post('bypreferences')
+  async findByPreferences(@Body() preferencesDto: any) {
+    const { preferencesIds } = preferencesDto;
+    
+    const restaurants = await this.restaurantService.findByPreferences(preferencesIds);
 
-  @Get(':id')
-  findOne(@Param('id') id: string): Promise<Restaurant | undefined> {
-    return this.restaurantService.findOne({where:{ id:+id}});
+    return { restaurants };
   }
 
   @Put(':id')

@@ -8,8 +8,8 @@ import axios from "axios";
 // "export default () => {}" function below (which runs individually
 // for each client)
 
-const local = "http://localhost:3000";
- let env = process.env.PROD ? "prod" : "dev";
+const local = "http://192.168.100.78:3000";
+let env = process.env.PROD ? "prod" : "dev";
 
 const api = axios.create({
   baseURL: local,

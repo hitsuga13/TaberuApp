@@ -43,9 +43,11 @@ export default {
     removeCardFromDeck() {
       this.visibleCards.shift();
     },
-  },created(){this.store.getallrestaurant();
+  },created(){
+    this.store.getallrestaurant();
   
-  this.store.getallrestaurant();
+  this.store.getallpreferences();
+  this.store.filter();
   
   }
 };

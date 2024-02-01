@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   var whitelist = [
     "http://localhost:9000"
+    
   ]
   const app = await NestFactory.create(AppModule);
 

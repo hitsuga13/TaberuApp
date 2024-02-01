@@ -8,7 +8,16 @@ export class Preferences {
   id: number;
 
   @Column()
-  itemName: string;
+  label: string;
+
+  @Column()
+  value: string;
+
+  @Column()
+  color: string;
+
+  @Column()
+  textcolor: string;
 
   @ManyToMany(() => User, user => user.preferences)
   @JoinTable({
