@@ -2,9 +2,9 @@
 import { defineStore } from "pinia";
 
 const tags = [
-  { name: "spicy" },
+  { name: "spicy" , color: "red", textcolor: "white"},
   { name: "sweet" },
-  { name: "halal" },
+  { name: "halal" , color: "red", textcolor: "white"},
   { name: "non-halal" },
   { label: "Spicy", value: "spicy" },
   { label: "Non Spicy", value: "non-spicy" },
@@ -20,6 +20,7 @@ const tags = [
 ];
 const EX_Restaurant = {
   name: "Kedai Pak Abu",
+  src: "/img/restaurant 1.jpg",
   menuitems: [
     {
       name: "nasi lemak",
@@ -42,7 +43,7 @@ const EX_Restaurant2 = {
 
 export const globalModule = defineStore("globalModule", {
   state: () => ({
-    restaurantlist: [EX_Restaurant, EX_Restaurant2, EX_Restaurant3],
+    restaurantlist: [EX_Restaurant, EX_Restaurant2],
     preferences: [tags[1]],
     wishlist: [EX_Restaurant],
     filteredRestaurant: [],

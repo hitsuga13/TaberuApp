@@ -51,15 +51,9 @@
             :key="key"
           >
             <q-item-section>
-              <q-item-label overline style="font-size: 30px;">Category</q-item-label>
+              <q-item-label overline style="font-size: 30px;">Menu</q-item-label>
               <q-item-label class="row q-gutter-sm" style="font-size:large">
-                <q-badge
-                  class="col-auto"
-                  style="font-size:30px; height: 50px;"
-                  :label="menu.name"
-                  v-for="(tag, index2) in menu.tags"
-                  :key="index2"
-                />
+                <p style="font-size:larger;">{{ menu.name }}</p>
               </q-item-label>
             </q-item-section>
           </q-item>
