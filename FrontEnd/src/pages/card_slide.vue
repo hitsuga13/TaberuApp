@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <GameCardsStack
-      :cards="cardlist"
+      :cards="visibleCards"
       @cardAccepted="handleCardAccepted"
       @cardRejected="handleCardRejected"
       @cardSkipped="handleCardSkipped"
@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      visibleCards: ["Test", "Hehe", "Webpack"]
+      visibleCards: this.store.restaurantlist,
     };
   },
 
