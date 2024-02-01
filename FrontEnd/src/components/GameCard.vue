@@ -14,12 +14,10 @@
         <div class="absolute-full text-subtitle2 flex flex-center">Caption</div>
       </q-img>
       <q-card-section>
-        <div class="text-h6">{{ card.name.name }}</div>
+        <div class="text-h6">{{ card.name }}</div>
         <div class="text-subtitle2">by John Doe</div>
       </q-card-section>
     </q-card>
-    <q-img :src="card.src" />
-
   </div>
 </template>
 
@@ -42,8 +40,8 @@ export default {
 
   props: {
     card: {
-      type: String,
-      required: true
+      type: Object,
+      required: true,
     },
     isCurrent: {
       type: Boolean,
@@ -230,10 +228,10 @@ $fs-card-title: 40px;
 }
 
 .cardTitle {
-  margin: auto;  // Center horizontally
-  margin-top: 15px;  // Add margin at the top
+  margin: auto; // Center horizontally
+  margin-top: 15px; // Add margin at the top
   font-size: $fs-card-title;
-  text-align: center;  // Center text horizontally
+  text-align: center; // Center text horizontally
 }
 
 @for $i from 1 through $cardsTotal {
