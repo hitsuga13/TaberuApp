@@ -23,6 +23,16 @@ const routes = [
         name: "Wishlist",
         component: () => import("pages/Wishlist.vue"),
       },
+      {
+        path: "/Food_Filter",
+        name: "Food_Filter",
+        component: () => import("pages/Food_Filter.vue"),
+      },
+      {
+        path: "/Food_Listing",
+        name: "Food_Listing",
+        component: () => import("pages/Food_Listing.vue"),
+      },
     ],
   },
 
