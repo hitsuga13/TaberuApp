@@ -1,24 +1,30 @@
 <template>
-  <div>
+  <q-page padding>
     <!-- Category List Section -->
-    <h2>Category List</h2>
+    <h2 class="text-h6">Category List</h2>
     <q-select v-model="selectedCategory" :options="categoryOptions" label="Select Category"/>
 
     <!-- Halal & Non-Halal Options Section -->
-    <h2>Halal & Non-Halal Options</h2>
+    <h2 class="text-h6">Halal & Non-Halal Options</h2>
     <q-toggle v-model="isHalal" label="Show Halal Only"/>
 
     <!-- Filtered Restaurants and Food Items Section -->
-    <h2>Filtered Restaurants and Food Items</h2>
-    <div v-for="(restaurant, index) in filteredRestaurants" :key="index">
-      <h3>{{ restaurant.name }}</h3>
-      <ul>
-        <li v-for="(food, foodIndex) in restaurant.foods" :key="foodIndex">
-          {{ food.name }} ({{ food.category }})
-        </li>
-      </ul>
-    </div>
-  </div>
+    <h2 class="text-h6">Filtered Restaurants and Food Items</h2>
+    <q-list bordered>
+      <q-item v-for="(restaurant, index) in filteredRestaurants" :key="index">
+        <q-item-section>
+          <q-item-label>{{ restaurant.name }}</q-item-label>
+          <q-list dense>
+            <q-item v-for="(food, foodIndex) in restaurant.foods" :key="foodIndex">
+              <q-item-section>
+                {{ food.name }} ({{ food.category }})
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-item-section>
+      </q-item>
+    </q-list>
+  </q-page>
 </template>
 
 <script>
@@ -39,43 +45,11 @@ export default {
           foods: [
             { name: 'Nasi Lemak', category: 'spicy', halal: true },
             { name: 'Roti Canai', category: 'sweet', halal: true }
-            // Add more food items with their respective categories and halal status
           ]
         },
-        {
-          name: 'Restaurant B',
-          foods: [
-            { name: 'Fried Chicken', category: 'spicy', halal: false },
-            { name: 'Fish and Chips', category: 'non-spicy', halal: true }
-            // Add more food items with their respective categories and halal status
-          ]
-        },
-        {
-        name: 'Restaurant C',
-          foods: [
-            { name: 'Fried Chicken', category: 'spicy', halal: false },
-            { name: 'Fish and Chips', category: 'non-spicy', halal: true }
-            // Add more food items with their respective categories and halal status
-          ]
-        },
-        {
-        name: 'Restaurant F',
-          foods: [
-            { name: 'Fried Chicken', category: 'spicy', halal: false },
-            { name: 'Fish and Chips', category: 'non-spicy', halal: true }
-            // Add more food items with their respective categories and halal status
-          ]
-        },
-        {
-        name: 'Restaurant E',
-          foods: [
-            { name: 'Fried Chicken', category: 'spicy', halal: false },
-            { name: 'Fish and Chips', category: 'non-spicy', halal: true }
-            // Add more food items with their respective categories and halal status
-          ]
-        }
+        // ... (similar structures for other restaurants)
       ]
-    }
+    };
   },
   computed: {
     filteredRestaurants() {
@@ -94,5 +68,5 @@ export default {
       });
     }
   }
-}
+};
 </script>
