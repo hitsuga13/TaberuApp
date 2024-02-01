@@ -2,26 +2,43 @@
 import { defineStore } from "pinia";
 import { api } from "../boot/axios"
 const tags = [
-  { name: "spicy" },
+  { name: "spicy", color: "red", textcolor: "white" },
   { name: "sweet" },
-  { name: "halal" },
+
+  { name: "halal" , color: "red", textcolor: "white"},
   { name: "non-halal" },
+
+  { label: "Spicy", value: "spicy" },
+  { label: "Non Spicy", value: "non-spicy" },
+
+  { label: "Sweet", value: "sweet" },
+  { label: "Less Sweet", value: "less-sweet" },
+
+  { label: "Halal", value: "halal" },
+  { label: "Non-Halal", value: "non-halal" },
+
+  { label: "Sour", value: "sour" },
+  { label: "Less Sour", value: "less-sour" },
 ];
 const EX_Restaurant = {
-  name: "kedai pak abu",
+  name: "Kedai Pak Abu",
+  src: "/img/restaurant 1.jpg",
   menuitems: [
     {
       name: "nasi lemak",
-      tags: [tags[0]],
+      review: "Pak Abu nya sedap sekali",
+      tags: [{ ...tags[0] }, { ...tags[2] }],
     },
   ],
+  review: [],
 };
 const EX_Restaurant2 = {
   name: "kedai Bak Kut TEh",
+  src: "/img/restaurant 2.jpg",
   menuitems: [
     {
       name: "nasi lemak Babi",
-      tags: [tags[0]],
+      tags: [tags[0], tags[3]],
     },
   ],
 };
@@ -31,6 +48,8 @@ export const globalModule = defineStore("globalModule", {
     restaurantlist: [],
     preferences: [tags[1]],
     wishlist: [EX_Restaurant],
+    filteredRestaurant: [],
+    tags: [...tags],
   }),
   actions: {
     async addToWishlist(item) {

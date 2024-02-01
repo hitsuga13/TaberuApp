@@ -1,17 +1,30 @@
 <template>
   <q-page class="flex flex-center">
     <q-list bordered>
-      <q-item
-        v-for="(restaurant, index) in store.wishlist"
-        :key="index"
-        clickable
-        v-ripple
-      >
-        <q-item-section avatar>
-          <q-icon color="primary" name="bluetooth" />
-        </q-item-section>
-        <q-item-section>{{ restaurant?.name ?? "Nama Kedai" }}</q-item-section>
-      </q-item>
+      <template v-for="(restaurant, index) in store.wishlist" :key="index">
+        <q-item clickable v-ripple>
+          <q-item-section avatar>
+            <q-icon color="blue" name="verified" />
+          </q-item-section>
+
+          <q-item-section>
+            {{ restaurant?.name || "" }}
+
+            {{ restaurant?.reviewlist.length ?? "" }}
+            <p v-for="rev,key in restaurant.reviewlist" :key="key"> {{ rev.review }}</p>
+          </q-item-section>
+
+          <q-item-section side top></q-item-section>
+
+          <q-item-label caption>2 min ago</q-item-label>
+
+          <div class="text-orange">
+            <q-icon v-for="star in [1, 2, 3, 4]" :key="star" name="star" />
+          </div>
+        </q-item>
+
+        <q-separator></q-separator>
+      </template>
     </q-list>
   </q-page>
 </template>

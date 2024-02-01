@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="visibleCards.length">
     <GameCardsStack
       :cards="visibleCards"
       @cardAccepted="handleCardAccepted"
