@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="justify-center">
 		<GameCardsStack
-			:cards="visibleCards"
+			:cards="cardlist"
 			@cardAccepted="handleCardAccepted"
 			@cardRejected="handleCardRejected"
 			@cardSkipped="handleCardSkipped"
@@ -20,7 +20,8 @@ export default {
 
   data() {
     return {
-      visibleCards: ["Test", "Hehe", "Webpack"]
+      visibleCards: ["Test", "Hehe", "Webpack", "hello", "abu", "ahmad", "kasim", "ali"],
+      cardlist:[{name:"kuih", src: "/img/cabage1.jpg"} , {name:"kuih2", src: "/img/cabage1.jpg"}]
     };
   },
 

@@ -9,7 +9,9 @@
     class="card"
     :style="{ transform: transformString }"
   >
-    <h3 class="cardTitle">{{ card }}</h3>
+    <h3 class="cardTitle">{{ card.name }}</h3>
+    <q-img :src="card.src" />
+
   </div>
 </template>
 
@@ -30,7 +32,7 @@ export default {
 
   props: {
     card: {
-      type: String,
+      type: Object,
       required: true
     },
     isCurrent: {
@@ -174,7 +176,7 @@ $cardsPositionOffset: 55vh * 0.06;
 $cardsScaleOffset: 0.08;
 $defaultTranslation: $cardsPositionOffset * $cardsTotal;
 $defaultScale: 1 - ($cardsScaleOffset * $cardsTotal);
-$fs-card-title: 1.125em;
+$fs-card-title: 40px;
 
 .card {
   @include card();
@@ -222,8 +224,10 @@ $fs-card-title: 1.125em;
 }
 
 .cardTitle {
-  margin: 0 0 15px;
+  margin: auto;  // Center horizontally
+  margin-top: 15px;  // Add margin at the top
   font-size: $fs-card-title;
+  text-align: center;  // Center text horizontally
 }
 
 @for $i from 1 through $cardsTotal {
