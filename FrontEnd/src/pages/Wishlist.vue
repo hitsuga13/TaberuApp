@@ -10,7 +10,7 @@
           <q-item-section>
             {{ restaurant?.name || "" }}
 
-            {{ restaurant?.reviewlist.length ?? "" }}
+            <!-- {{ restaurant?.reviewlist.length ?? "" }} -->
             <p v-for="rev,key in restaurant.reviewlist" :key="key"> {{ rev.review }}</p>
           </q-item-section>
 
