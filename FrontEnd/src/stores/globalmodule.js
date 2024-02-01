@@ -1,6 +1,6 @@
 // src/store/globalModule.js
 import { defineStore } from "pinia";
-
+import {api} from "../boot/axios"
 const tags = [
   { name: "spicy" },
   { name: "sweet" },
@@ -28,13 +28,36 @@ const EX_Restaurant2 = {
 
 export const globalModule = defineStore("globalModule", {
   state: () => ({
-    restaurantlist: [EX_Restaurant, EX_Restaurant2],
+    restaurantlist: [ ],
     preferences: [tags[1]],
+    wishlist: [EX_Restaurant],
+  }),
+  state: () => ({
+    restaurantlist: [ ],
+    preferences: [tags[2]],
     wishlist: [EX_Restaurant],
   }),
   actions: {
     async addToWishlist(item) {
       this.wishlist.push({ ...item });
     },
+    getallrestaurant(){
+      api.get("restaurants").then( (res)=>{
+      
+      this.restaurantlist=res.data;})
+
+    },
+    getallpreferences(){
+      api.get("preferences").then( (res)=>{
+      
+      this.preferenceslist=res.data;})
+
+    },
+    getallmenuitem(){
+      api.get("menuitems").then( (res)=>{
+        
+        this.menuitemlist=res.data;})
+
+    }
   },
 });

@@ -43,6 +43,10 @@ export default {
     removeCardFromDeck() {
       this.visibleCards.shift();
     },
-  },
+  },created(){this.store.getallrestaurant();
+  
+  this.store.getallrestaurant();
+  
+  }
 };
 </script>
