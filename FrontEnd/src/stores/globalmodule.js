@@ -19,15 +19,19 @@ const EX_Restaurant = {
   menuitems: [
     {
       name: "nasi lemak",
-      review : "Pak Abu nya sedap sekali",
       tags: [{ ...tags[0] }, { ...tags[2] }],
     },
   ],
-  review:[]
+  reviewlist:[
+    {
+      review: "Sedappp!!",
+      user: "Ahmad",
+      date: "12/12/2022",
+    }
+  ]
 };
 const EX_Restaurant2 = {
   name: "kedai Bak Kut Teh",
-
   menuitems: [
     {
       name: "Nasi Lemak Babi",
