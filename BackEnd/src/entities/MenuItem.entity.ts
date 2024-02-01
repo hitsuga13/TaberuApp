@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, OneToMany,JoinTable,ManyToOne } from 'typeorm';
-import { Preferences } from './Preferences.entity';
-import { Restaurant } from './Restaurant.entity';
+import { Preferences } from './preferences.entity';
+import { Restaurant } from './restaurant.entity';
 
-@Entity()
+@Entity('menuitem')
 export class MenuItem {
   @PrimaryGeneratedColumn()
   id: number;
@@ -15,6 +15,6 @@ export class MenuItem {
   restaurant: Restaurant;
   
 
-  @ManyToMany(() => Preferences)
+  @ManyToMany(() => Preferences,(preference)=>preference.menuItems)
   preferences: Preferences[];
 }

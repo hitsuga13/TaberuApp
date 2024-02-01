@@ -14,12 +14,12 @@ export class PreferencesController {
 
   @Get()
   findAll(): Promise<Preferences[]> {
-    return this.preferencesService.findAll({relations:["user"]});
+    return this.preferencesService.findAll({relations:["users"]});
   }
 
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Preferences | undefined> {
-    return this.preferencesService.findOne({where:{id:+id}});
+    return this.preferencesService.findOne({where:{id:+id}}); 
   }
 
   @Put(':id')

@@ -2,10 +2,17 @@
 import { defineStore } from "pinia";
 
 const tags = [
-  { name: "spicy" },
-  { name: "sweet" },
-  { name: "halal" },
-  { name: "non-halal" },
+  { label: "Spicy", value: "spicy" },
+  { label: "Non Spicy", value: "non-spicy" },
+
+  { label: "Sweet", value: "sweet" },
+  { label: "Less Sweet", value: "less-sweet" },
+
+  { label: "Halal", value: "halal" },
+  { label: "Non-Halal", value: "non-halal" },
+
+  { label: "Sour", value: "sour" },
+  { label: "Less Sour", value: "less-sour" },
 ];
 const EX_Restaurant = {
   name: "Kedai Pak Abu",
@@ -13,18 +20,18 @@ const EX_Restaurant = {
     {
       name: "nasi lemak",
       review : "Pak Abu nya sedap sekali",
-      tags: [tags[0]],
+      tags: [{ ...tags[0] }, { ...tags[2] }],
     },
   ],
   review:[]
 };
 const EX_Restaurant2 = {
   name: "kedai Bak Kut Teh",
+
   menuitems: [
     {
       name: "nasi lemak Babi",
-      review:"Babinya sedap dan lazat sekali ",
-      tags: [tags[0]],
+      tags: [{ ...tags[0] }, { ...tags[3] }],
     },
   ],
 };
@@ -34,10 +41,15 @@ export const globalModule = defineStore("globalModule", {
     restaurantlist: [EX_Restaurant, EX_Restaurant2],
     preferences: [tags[1]],
     wishlist: [EX_Restaurant],
+    filteredRestaurant: [],
+    tags: [...tags],
   }),
   actions: {
     async addToWishlist(item) {
       this.wishlist.push({ ...item });
+    },
+    filterFn(tags) {
+      console.log(tags);
     },
   },
 });
