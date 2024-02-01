@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 const tags = [
   { name: "spicy" , color: "red", textcolor: "white"},
   { name: "sweet" },
-  
+
   { name: "halal" , color: "red", textcolor: "white"},
   { name: "non-halal" },
 
