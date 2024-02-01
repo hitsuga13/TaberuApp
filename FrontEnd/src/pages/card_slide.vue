@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="justify-center">
+  <div id="app">
     <GameCardsStack
       :cards="cardlist"
       @cardAccepted="handleCardAccepted"
