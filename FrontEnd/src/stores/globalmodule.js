@@ -30,7 +30,11 @@ const EX_Restaurant = {
       tags: [{ ...tags[0] }, { ...tags[2] }],
     },
   ],
-  review: [],
+  review: [
+    {
+      review : "Sedap",
+    }
+  ],
 };
 const EX_Restaurant2 = {
   name: "kedai Bak Kut TEh",
