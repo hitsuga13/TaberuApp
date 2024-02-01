@@ -5,7 +5,7 @@ const tags = [
   { name: "spicy", color: "red", textcolor: "white" },
   { name: "sweet" },
 
-  { name: "halal" , color: "red", textcolor: "white"},
+  { name: "halal", color: "red", textcolor: "white" },
   { name: "non-halal" },
 
   { label: "Spicy", value: "spicy" },
@@ -32,7 +32,7 @@ const EX_Restaurant = {
   ],
   review: [
     {
-      review : "Sedap",
+      review: "Sedap",
     }
   ],
 };
@@ -49,7 +49,7 @@ const EX_Restaurant2 = {
 
 export const globalModule = defineStore("globalModule", {
   state: () => ({
-    restaurantlist: [],
+    restaurantlist: [EX_Restaurant2],
     preferences: [tags[1]],
     wishlist: [EX_Restaurant],
     filteredRestaurant: [],
