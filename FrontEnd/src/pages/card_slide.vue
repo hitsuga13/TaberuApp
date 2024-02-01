@@ -44,10 +44,10 @@ export default {
       this.visibleCards.shift();
     },
   },created(){
-    this.store.getallrestaurant();
+    //this.store.getallrestaurant();
   
-  this.store.getallpreferences();
-  this.store.filter();
+//  this.store.getallpreferences();
+ // this.store.filter();
   
   }
 };
