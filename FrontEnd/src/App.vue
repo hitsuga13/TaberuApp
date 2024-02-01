@@ -13,9 +13,9 @@ export default defineComponent({
     return { store };
   },
 created(){
-    this.store.getallrestaurant();
+//    this.store.getallrestaurant();
   
-  this.store.getallpreferences();
+ // this.store.getallpreferences();
 //  this.store.filter();
   
   },
