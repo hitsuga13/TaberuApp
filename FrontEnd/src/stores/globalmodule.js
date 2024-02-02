@@ -33,7 +33,7 @@ const EX_Restaurant2 = {
 
 export const globalModule = defineStore("globalModule", {
   state: () => ({
-    restaurantlist: [EX_Restaurant2],
+    restaurantlist: [],
     preferences: [],
     wishlist: [EX_Restaurant],
     filteredRestaurant: [],

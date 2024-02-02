@@ -26,21 +26,24 @@
           <q-item
             clickable
             v-ripple
-            v-for="(menu, key) in card.menuitems"
+            v-for="(menu, key) in card.menuitem"
             :key="key"
           >
             <q-item-section>
-              <q-item-label overline style="font-size: 30px;">Category</q-item-label>
-              <q-item-label class="row q-gutter-sm" style="font-size:large">
+              <q-item-label overline style="font-size: 30px">{{
+                menu.itemname
+              }}</q-item-label>
+              <q-item-label class="row q-gutter-sm" style="font-size: large">
                 <q-badge
                   class="col-auto"
-                  style="font-size:30px; height: 50px;"
+                  style="font-size: 30px; height: 50px"
                   :color="tag.color ? tag.color : 'orange'"
                   :text-color="tag.textcolor ? tag.textcolor : 'black'"
-                  :label="tag.name"
-                  v-for="(tag, index2) in menu.tags"
+                  :label="tag.label"
+                  v-for="(tag, index2) in menu.preferences"
                   :key="index2"
                 />
+                <!-- {{ menu }} -->
               </q-item-label>
             </q-item-section>
           </q-item>
@@ -51,9 +54,9 @@
             :key="key"
           >
             <q-item-section>
-              <q-item-label overline style="font-size: 30px;">Menu</q-item-label>
-              <q-item-label class="row q-gutter-sm" style="font-size:large">
-                <p style="font-size:larger;">{{ menu.name }}</p>
+              <q-item-label overline style="font-size: 30px">Menu</q-item-label>
+              <q-item-label class="row q-gutter-sm" style="font-size: large">
+                <p style="font-size: larger">{{ menu.name }}</p>
               </q-item-label>
             </q-item-section>
           </q-item>
