@@ -1,7 +1,7 @@
 <template>
-  <div id="app" v-if="visibleCards.length">
+  <div id="app" v-if="store.restaurantlist.length">
     <GameCardsStack
-      :cards="visibleCards"
+      :cards="store.restaurantlist"
       @cardAccepted="handleCardAccepted"
       @cardRejected="handleCardRejected"
       @cardSkipped="handleCardSkipped"
@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      visibleCards: this.store.restaurantlist,
+      visibleCards: [],
     };
   },
 
@@ -43,12 +43,14 @@ export default {
     removeCardFromDeck() {
       this.visibleCards.shift();
     },
-  },created(){
+  },
+  mounted() {
+    this.visibleCards = this.store.restaurantlist;
+  },
+  created() {
     //this.store.getallrestaurant();
-  
-//  this.store.getallpreferences();
- // this.store.filter();
-  
-  }
+    //  this.store.getallpreferences();
+    // this.store.filter();
+  },
 };
 </script>

@@ -1,6 +1,9 @@
 <template>
   <q-page padding>
     <div>
+      {{ store.tags }}<br />
+
+      {{ selectedCategories }}
       <!-- Category List Section -->
       <h2 class="text-h6">Category List</h2>
       <q-select
@@ -32,6 +35,7 @@ export default {
       isHalal: false,
 
       restaurants: [
+        // Change this to an array of objects
         {
           name: "Restaurant A",
           foods: [
@@ -39,11 +43,12 @@ export default {
             { name: "Roti Canai", category: "sweet", halal: true },
           ],
         },
-        // ... (similar structures for other restaurants)
+        // Add more restaurants as needed
       ],
     };
   },
   computed: {
+    // You can uncomment and implement the filteredRestaurants computed property if needed
     // filteredRestaurants() {
     //   return this.restaurants.filter((restaurant) => {
     //     return restaurant.foods.some((food) => {
@@ -65,7 +70,9 @@ export default {
   },
   methods: {
     filterRestaurants() {
-      // Navigate to the new page "card_slide"
+      console.log(this.selectedCategories);
+      // Call the filter method on the store passing the necessary data
+      this.store.filter(this.selectedCategories.map((cat) => cat.id));
       this.$router.push({ name: "cardView" });
     },
   },

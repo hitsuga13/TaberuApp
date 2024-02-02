@@ -2,23 +2,7 @@
 import { defineStore } from "pinia";
 import { api } from "../boot/axios"
 const tags = [
-  { name: "spicy", color: "red", textcolor: "white" },
-  { name: "sweet" },
 
-  { name: "halal", color: "red", textcolor: "white" },
-  { name: "non-halal" },
-
-  { label: "Spicy", value: "spicy" },
-  { label: "Non Spicy", value: "non-spicy" },
-
-  { label: "Sweet", value: "sweet" },
-  { label: "Less Sweet", value: "less-sweet" },
-
-  { label: "Halal", value: "halal" },
-  { label: "Non-Halal", value: "non-halal" },
-
-  { label: "Sour", value: "sour" },
-  { label: "Less Sour", value: "less-sour" },
 ];
 const EX_Restaurant = {
   name: "Kedai Pak Abu",
@@ -50,10 +34,10 @@ const EX_Restaurant2 = {
 export const globalModule = defineStore("globalModule", {
   state: () => ({
     restaurantlist: [EX_Restaurant2],
-    preferences: [tags[1]],
+    preferences: [],
     wishlist: [EX_Restaurant],
     filteredRestaurant: [],
-    tags: [...tags],
+    tags: [],
   }),
   actions: {
     async addToWishlist(item) {
@@ -69,17 +53,15 @@ export const globalModule = defineStore("globalModule", {
     getallpreferences() {
       api.get("preferences").then((res) => {
 
-        this.preferenceslist = res.data;
+        this.tags = res.data;
       })
 
     },
     filter(id = [2]) {
       api.post("restaurants/bypreferences", { preferencesIds: id }).then((res) => {
         console.log(res)
-        this.restaurantlist = res.data;
+        this.restaurantlist = res.data.restaurants;
       })
     },
   }
-
-
 });
